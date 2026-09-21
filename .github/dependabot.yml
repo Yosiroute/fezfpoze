@@ -1,0 +1,19 @@
+# .github/dependabot.yml  — Dependabot config pour un projet npm
+version: 2
+updates:
+  # Mises à jour des dépendances npm (package.json / package-lock.json)
+  - package-ecosystem: "npm"
+    directory: "/"                 # dossier contenant package.json (ex: "/frontend" si monorepo)
+    schedule:
+      interval: "daily"            # daily | weekly | monthly
+    open-pull-requests-limit: 10   # nb max de PRs de version ouvertes en même temps
+    # groupe les bumps mineurs/patch en une seule PR (moins de bruit)
+    groups:
+      npm-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    # commit-message: préfixes pratiques pour filtrer / matcher dans un workflow
+    commit-message:
+      prefix: "npm"
+      include: "scope"
